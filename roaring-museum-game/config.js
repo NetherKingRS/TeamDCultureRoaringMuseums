@@ -3,7 +3,7 @@
 window.MUSEUM_CONFIG = {
   backgroundMusic: "assets/jazz.mp3", // Optional: "assets/jazz.mp3". Blank uses the built-in jazz.
   // Upload MP3s to assets/narration/; set paths for each exhibit below.
-  useDeviceNarration: false, // false disables the device voice for unrecorded exhibits.
+  useDeviceNarration: true, // false disables the device voice for unrecorded exhibits.
   exhibitNarration: {  
     radio: "", leisure: "", advert: "",
     vote: "", flapper: "", work: "",
