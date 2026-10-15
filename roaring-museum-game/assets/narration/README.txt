@@ -1,0 +1,1 @@
+Add your 18 MP3 recordings here. See RECORDING-GUIDE.md for filenames and scripts. Then enter their paths in config.js.
