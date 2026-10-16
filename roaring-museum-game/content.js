@@ -77,3 +77,137 @@ ball:'<circle cx="16" cy="16" r="13"/><path d="M7 6c10 5 10 15 0 20M25 6c-10 5-1
 film:'<rect x="4" y="3" width="24" height="26"/><path d="M9 3v26M23 3v26M4 9h5M4 16h5M4 23h5M23 9h5M23 16h5M23 23h5M13 10l7 6-7 6z"/>',
 camera:'<rect x="3" y="10" width="20" height="16" rx="2"/><path d="m23 15 7-4v15l-7-4M12 26v5"/><circle cx="8" cy="6" r="4"/><circle cx="18" cy="6" r="4"/>'
 };
+// BEGIN SCHOOL EXHIBIT UPDATE
+// Paste this block at the very bottom of content.js, after its existing code.
+(() => {
+  const loc = path => 'https://cdn.loc.gov/service/pnp/' + path;
+  const wiki = name => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(name.replaceAll(' ', '_'));
+  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const artifact = (image, imageAlt, credit, source) => ({
+    image, imageAlt,
+    caption: `${escape(credit)} <a href="${escape(source)}" target="_blank" rel="noopener">View artifact and source</a>`
+  });
+  const charleston = artifact(
+    loc('cph/3b30000/3b39000/3b39800/3b39896r.jpg'),
+    'Ruth Bennett and Sylvia Clavins dancing on a railing beside Representative McMillan at the Capitol.',
+    'Charleston at the Capitol, between 1920 and 1930. National Photo Company Collection, Library of Congress. No known restrictions on publication.',
+    'https://www.loc.gov/pictures/item/93508925/'
+  );
+  const updates = {
+    radio: {
+      title: 'Radio Connects the Nation',
+      body: `Radio changed American culture by bringing news, music, speeches, and sporting events directly into homes. In November 1920, KDKA in Pittsburgh broadcast presidential election results, an important early example of commercial broadcasting. NBC began in 1926 and helped connect local stations through a national network. People in different communities could now hear the same programs, making radio an important part of a shared popular culture. Businesses also recognized its commercial value and used sponsored programming to reach potential customers.`,
+      evidence: 'This 1924 photograph shows Robert La Follette giving a radio campaign speech. It illustrates how broadcasting could carry a speaker beyond the people physically present.',
+      ...artifact(loc('npcc/26100/26146r.jpg'), 'Robert La Follette delivering a radio campaign speech.', 'Robert M. La Follette, radio campaign speech, September 1, 1924. National Photo Company Collection, Library of Congress.', 'https://www.loc.gov/pictures/item/2016849480/')
+    },
+    leisure: {
+      title: 'Technology and Leisure Time',
+      body: `During the 1920s, electrical appliances such as washing machines and vacuum cleaners changed household work for families who could afford them. These devices could reduce the effort required for particular chores, while commercial entertainment offered new ways to spend available free time. Movies, radio programs, and recreational outings became important parts of daily life. However, these changes were uneven. Many households lacked electricity or money for appliances, and women continued to perform much of the housework. Greater convenience did not automatically mean equal leisure for everyone.`,
+      evidence: 'This washing-machine advertisement appeared in 1920. Its promises show how a seller promoted convenience; an advertisement alone cannot establish how much work the machine actually saved.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/a/a7/1920_electric_washer_ad.jpg', 'A 1920 advertisement for the Cataract electric washing machine.', 'Seattle Electric Washer Company advertisement, The Argus, April 24, 1920, page 6. Scan photographed by Jmabel; slightly cleaned. Wikimedia Commons; public domain in the United States.', wiki('1920 electric washer ad.jpg'))
+    },
+    advert: {
+      title: 'Advertising and Consumer Culture',
+      body: `Advertising helped shape the consumer culture of the 1920s by presenting new products as signs of comfort, excitement, and modern life. Newspapers and magazines encouraged readers to buy radios, automobiles, and household appliances. Installment plans allowed customers to pay over time, making some expensive purchases more accessible while also creating debt. The Horne department store advertisement shown here promoted radio equipment in 1920. It demonstrates that businesses were already treating radio as a product for ordinary shoppers, rather than only as a technical experiment.`,
+      evidence: 'The Horne advertisement appeared in the Pittsburgh Press on September 29, 1920. Consider how its wording tries to turn curiosity about radio into a purchase.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/5/52/Horne_Department_store_radio_advertisement_%281920%29.gif', 'Horne department store newspaper advertisement promoting radio equipment in 1920.', 'Horne department store advertisement, Pittsburgh Press, September 29, 1920, page 11. Wikimedia Commons; public domain in the United States.', wiki('Horne Department store radio advertisement (1920).gif'))
+    },
+    vote: {
+      title: 'The Nineteenth Amendment',
+      body: `Ratified on August 18, 1920, the Nineteenth Amendment prohibited denying citizens the right to vote on the basis of sex. It followed decades of organizing, speeches, marches, and political pressure by suffrage activists. This was a major expansion of women's political rights, but it did not remove every obstacle to voting. Racial discrimination, intimidation, and state voting restrictions continued to exclude many Black women, especially in the South. The amendment marked an important constitutional victory, while the struggle for equal access to elections continued.`,
+      evidence: 'The image shows the congressional resolution proposing the amendment in 1919. Distinguish that document date from ratification in 1920.',
+      ...artifact('https://www.archives.gov/files/milestone-documents/images/doc-063-big.jpg', 'The 1919 congressional resolution proposing the Nineteenth Amendment.', 'Joint Resolution proposing the Nineteenth Amendment, June 4, 1919; ratified in 1920. National Archives, Record Group 11.', 'https://www.archives.gov/milestone-documents/19th-amendment')
+    },
+    flapper: {
+      title: 'Flappers and Changing Expectations',
+      body: `The flapper became a well-known symbol of changing expectations for young women during the 1920s. Bobbed hair, shorter skirts, dancing, and greater independence challenged older ideas about respectable behavior. Newspapers, advertisements, and movies helped spread this image, especially in urban popular culture. However, the flapper did not represent every woman. Many women preferred traditional styles or lacked the money and freedom associated with fashionable nightlife. Changes in clothing and public behavior were significant, but they did not end discrimination or unequal opportunities.`,
+      evidence: 'The Capitol photograph shows two women publicly performing a fashionable dance. It documents a particular moment, not the daily behavior of all American women.',
+      ...charleston
+    },
+    work: {
+      title: 'Women, Education, and Employment',
+      body: `Women pursued education, paid employment, and public participation during the early twentieth century, including the 1920s. Clerical training could prepare them for jobs using typewriters and other office equipment. Such work could provide income and greater independence, but access and treatment depended strongly on race and class. Women often faced restricted career choices and continued responsibility for domestic work. The photograph of Black women studying typewriting reminds us that women's history includes education and employment as well as the more familiar images of fashion and dancing.`,
+      evidence: 'The Library of Congress dates this training-school photograph broadly to about 1910–1925. It shows vocational education, but does not establish the students’ later wages or careers.',
+      ...artifact(loc('ds/13200/13245r.jpg'), 'African American women in a typewriting class at the National Training School for Women.', 'National Training School for Women, typewriting class, approximately 1910–1925. Library of Congress. No known restrictions on publication.', 'https://www.loc.gov/pictures/item/2019632948/')
+    },
+    lost: {
+      title: 'Hemingway and the Lost Generation',
+      body: `World War I left many people questioning ideas about honor, progress, and the future. The term Lost Generation became associated with writers who explored this uncertainty. Ernest Hemingway's 1926 novel The Sun Also Rises follows expatriates living and traveling in Europe after the war. Although its characters seek enjoyment, their relationships reveal disappointment and a lack of direction. The novel helps explain why the decade's lively entertainment did not erase the war's effects. Literature offers a perspective on these feelings, rather than a description of every person's experience.`,
+      evidence: 'This is the first-edition dust jacket from 1926, illustrated by Cleonike Damianakes. The book is a literary artifact; its fictional characters are not survey evidence about all veterans.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/8/8b/The_Sun_Also_Rises_%281st_ed._cover%29.jpg', 'The first-edition dust jacket of Ernest Hemingway’s The Sun Also Rises.', 'The Sun Also Rises, 1926. Jacket illustration by Cleonike Damianakes; Charles Scribner’s Sons. Wikimedia Commons; public domain in the United States.', wiki('The Sun Also Rises (1st ed. cover).jpg'))
+    },
+    gatsby: {
+      title: 'The Great Gatsby and the American Dream',
+      body: `Published in 1925, F. Scott Fitzgerald's The Great Gatsby examines wealth, social class, ambition, and disappointment. Its parties and luxurious surroundings reflect the public image of the Jazz Age, but the story also questions the belief that money guarantees happiness or acceptance. Gatsby's pursuit of an idealized future reveals tensions within the American Dream. The novel therefore provides a useful contrast to advertisements celebrating consumption. Fitzgerald presents the excitement of wealth while encouraging readers to consider the moral and emotional costs of pursuing status.`,
+      evidence: 'Francis Cugat designed the famous 1925 dust jacket. This digital reproduction is retouched; the underlying cover design is a historical artifact.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/a/ac/The_Great_Gatsby_cover_1925_wikisource.jpg', 'Francis Cugat’s cover design for the 1925 edition of The Great Gatsby.', 'The Great Gatsby dust jacket, Francis Cugat, 1925. Retouched digital reproduction via Wikimedia Commons; public domain in the United States.', wiki('The Great Gatsby cover 1925 wikisource.jpg'))
+    },
+    dada: {
+      title: 'Dada and Modern Art',
+      body: `Modern artists experimented with new ways to represent a world transformed by industrialization and war. Dada emerged during World War I and challenged traditional expectations about beauty, reason, and artistic skill. Its participants used collage, unusual combinations, humor, and ordinary objects to question accepted ideas. Some viewed the destruction of the war as evidence that established institutions had failed. The 1921 publication New York Dada shows that this movement also had an American presence. Modernism included many approaches, so not every experimental artist shared Dada's methods or beliefs.`,
+      evidence: 'The cover of New York Dada uses an altered commercial object and an unexpected image. It invites viewers to question the boundary between an everyday product and a work of art.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/1/10/New_York_Dada.jpg', 'Cover of New York Dada, featuring an altered perfume-bottle label.', 'New York Dada, April 1921. Marcel Duchamp and Man Ray. Wikimedia Commons; public domain in the United States.', wiki('New York Dada.jpg'))
+    },
+    city: {
+      title: 'The Growth of Urban Culture',
+      body: `The 1920 census was the first to classify more than half of the United States population as urban. Under the definition used at that time, urban places generally had at least 2,500 residents, so the category included smaller towns as well as major cities. Urban areas brought shops, theaters, workplaces, and large audiences close together. This concentration helped fashions, films, and other entertainment spread. The illuminated signs of Broadway illustrate the visibility of commercial entertainment, but one famous district cannot represent every urban neighborhood.`,
+      evidence: 'This stereograph shows Broadway near Times Square at night, approximately 1920–1930. Its paired views were intended to create a three-dimensional effect in a stereoscope.',
+      ...artifact(loc('stereo/1s00000/1s06000/1s06700/1s06725r.jpg'), 'A stereograph showing illuminated Broadway near Times Square at night.', 'Broadway above Times Square, approximately 1920–1930. Keystone View Company; Library of Congress. No known restrictions on publication.', 'https://www.loc.gov/item/2017649951/')
+    },
+    rural: {
+      title: 'Rural Life and National Culture',
+      body: `Rural communities maintained important local traditions through farming, churches, fairs, and neighborhood gatherings. Their daily routines could differ from those of city residents, but they were not completely separated from national culture. Radio brought news and entertainment into farm homes, while automobiles connected some families with nearby towns. The photograph of farm families listening together demonstrates this connection. Access still depended on income, equipment, and local conditions. Sharing a broadcast did not mean that rural and urban Americans had identical lives, beliefs, or opportunities.`,
+      evidence: 'The archive gives this photograph an uncertain date of approximately 1925–1930. It records a rural listening group, not proof that every farm household owned a radio.',
+      ...artifact(loc('cph/3b00000/3b02000/3b02300/3b02306r.jpg'), 'Farm families seated in rocking chairs and listening to a radio.', 'Farm families listening to radio, approximately 1925–1930 (date uncertain). USDA Extension Service; Library of Congress. No known restrictions on publication.', 'https://www.loc.gov/item/2006677937/')
+    },
+    road: {
+      title: 'Automobiles and Recreation',
+      body: `Automobiles changed recreation by allowing people to travel more freely between homes, towns, and vacation destinations. Families could take outings, visit relatives, or camp beyond the routes served by railroads. Motor travel encouraged businesses such as roadside services and tourist camps. The camping photograph shows how cars became part of leisure activities during the decade. However, ownership, fuel, and maintenance required money, and road conditions varied. The automobile expanded possibilities for many Americans without giving everyone the same ability to travel.`,
+      evidence: 'This photograph of an automobile camping party was copyrighted in December 1923. The archive identifies its location as probably in or near Yellowstone National Park.',
+      ...artifact(loc('cph/3b30000/3b39000/3b39400/3b39456r.jpg'), 'An automobile camping party, probably in or near Yellowstone National Park.', 'Lake Public Auto Camp Party, copyright December 1923; location probably near Yellowstone. Library of Congress. No known restrictions on publication.', 'https://www.loc.gov/pictures/item/93512831/')
+    },
+    jazzrecord: {
+      title: 'Jazz, Blues, and the Recording Industry',
+      body: `Jazz and blues developed from African American musical traditions and became major influences on American popular culture. During the 1920s, records allowed listeners to hear performances far from the original venue. Bessie Smith became an influential blues singer, while Louis Armstrong's Hot Five and Hot Seven recordings helped reshape jazz performance. Commercial success widened audiences, but racism continued to affect employment, venues, and the music business. These recordings demonstrate both the creativity of Black musicians and the growing power of recorded sound to spread culture.`,
+      evidence: 'The image is a 1936 portrait of Bessie Smith, not a photograph taken during her first recording sessions. The separate audio link is a 1920 recording by the Original Dixieland Jazz Band, not Bessie Smith. That white band’s commercial recording does not establish a white origin for jazz.',
+      ...artifact('https://tile.loc.gov/storage-services/service/pnp/van/5a52000/5a52800/5a52888r.jpg', 'Portrait of blues singer Bessie Smith.', 'Bessie Smith, 1936. Photograph by Carl Van Vechten; Library of Congress. Later portrait of a major 1920s performer; see archive rights information.', 'https://www.loc.gov/pictures/item/2004663577/')
+    },
+    harlem: {
+      title: 'The Harlem Renaissance',
+      body: `The Harlem Renaissance was a flowering of Black literature, music, and visual art during the 1920s and beyond. The Great Migration helped expand Black urban communities as people sought work and relief from Southern racial oppression. Harlem in New York City became an important meeting place for writers, artists, and audiences. Langston Hughes was among the writers who drew attention to Black experiences and cultural expression. Their work challenged stereotypes and strengthened cultural pride, even though artistic recognition did not end segregation or unequal treatment.`,
+      evidence: 'This 1925 portrait shows Langston Hughes during the decade associated with the Harlem Renaissance. A portrait identifies an individual; his writing provides further evidence of his ideas.',
+      ...artifact('https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Langston_Hughes_by_Underwood_%26_Underwood%2C_1925%2C_gelatin_silver_print%2C_from_the_National_Portrait_Gallery_-_NPG-NPG_2011_101Hughes-000001.jpg/500px-Langston_Hughes_by_Underwood_%26_Underwood%2C_1925%2C_gelatin_silver_print%2C_from_the_National_Portrait_Gallery_-_NPG-NPG_2011_101Hughes-000001.jpg', 'Portrait of Langston Hughes in 1925.', 'Langston Hughes, 1925. Underwood & Underwood; Smithsonian National Portrait Gallery, NPG.2011.101. CC0; image via Wikimedia Commons.', 'https://npg.si.edu/object/npg_NPG.2011.101')
+    },
+    dance: {
+      title: 'The Charleston and Youth Culture',
+      body: `Dancing made popular culture an activity that people could share directly. During the 1920s, the Charleston became strongly associated with youthful energy and changing social expectations. Performances, newspapers, records, and films helped publicize new steps and fashions. Some Americans welcomed these changes as expressions of freedom, while others criticized them as challenges to traditional behavior. The debate shows that the Roaring Twenties was not simply a period of universal agreement or celebration. Entertainment could also reveal disagreements about age, gender, and acceptable public conduct.`,
+      evidence: 'This photograph also appears in the flapper exhibit. Here, focus on the dance movements and public performance rather than using clothing as the main evidence.',
+      ...charleston
+    },
+    sport: {
+      title: 'Sports and National Celebrities',
+      body: `Spectator sports became an important part of American mass culture during the 1920s. Athletes such as baseball player Babe Ruth and boxer Jack Dempsey attracted attention beyond the crowds attending their events. Newspapers and radio helped fans follow results, discuss records, and recognize famous competitors. Sporting celebrities became public figures whose reputations could be used in advertising and popular entertainment. However, widespread enthusiasm did not mean equal access to participation. Racial barriers and unequal opportunities continued to shape organized sports during the decade.`,
+      evidence: 'This portrait presents Babe Ruth in uniform holding a bat. It shows how an athlete could be made recognizable through a circulated photograph; press coverage is needed to measure the extent of his fame.',
+      ...artifact(loc('ppmsca/39000/39089r.jpg'), 'Babe Ruth in baseball uniform holding a bat.', 'Babe Ruth, copyright 1920. Irwin, La Broad & Pudlin; Library of Congress. Published historical portrait; consult the linked rights record.', 'https://www.loc.gov/pictures/item/92507380/')
+    },
+    cinema: {
+      title: 'Movies and the Rise of Screen Stars',
+      body: `Movies gave audiences across the country access to many of the same stories, performers, and fashions. Silent-film stars such as Clara Bow became widely recognized public figures. In 1927, The Jazz Singer helped accelerate the commercial transition toward films with synchronized speech and song, although it was not the first experiment with sound. Cinema also reflected the inequalities of its time, including racist representations. Studying the movies therefore involves both their technical achievements and the messages they communicated about American society.`,
+      evidence: 'This publicity portrait identifies Clara Bow, a major silent-film star. The Library of Congress records no date on its caption card, so the photograph should not be labeled with an invented year.',
+      ...artifact(loc('ggbain/38800/38839r.jpg'), 'Publicity portrait of silent-film actress Clara Bow.', 'Clara Bow, photograph undated in the catalog. Bain News Service; Library of Congress. No known restrictions on publication.', 'https://www.loc.gov/pictures/item/2014718978/')
+    },
+    homefilm: {
+      title: 'Home Movies and Personal Memories',
+      body: `Home-movie equipment allowed some families to record travel, celebrations, and everyday experiences. The surviving films made by Ira Gershwin include scenes of New York Harbor and Florida vacations from approximately 1928–1930. Unlike a commercial feature film, this footage preserves a personal selection of places and activities. It is useful evidence of recreation, but it mainly reflects the experiences of people who could afford cameras and travel. The historical camera shown here illustrates the type of technology available; it is not identified as Gershwin's own camera.`,
+      evidence: 'This is a modern photograph of a Ciné-Kodak Model B camera dated approximately 1927. The separate archive link opens Gershwin’s actual home-movie footage.',
+      ...artifact('https://upload.wikimedia.org/wikipedia/commons/1/1e/Vintage_Cine-Kodak_Model_B_16mm_Movie_Camera_With_Ostrich_Leather_Covered_Case%2C_Made_In_USA%2C_Circa_1927_%2821647314580%29.jpg', 'A surviving Ciné-Kodak Model B 16mm movie camera with its carrying case.', 'Ciné-Kodak Model B, approximately 1927. Modern photograph by Joe Haupt, September 29, 2015; unmodified, CC BY-SA 2.0. Not Gershwin’s documented camera.', wiki('Vintage Cine-Kodak Model B 16mm Movie Camera With Ostrich Leather Covered Case, Made In USA, Circa 1927 (21647314580).jpg'))
+    }
+  };
+  updates.homefilm.caption += ' <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener">Image license</a>';
+  for (const room of window.ROOMS) {
+    for (const exhibit of room.exhibits) {
+      if (updates[exhibit.id]) Object.assign(exhibit, updates[exhibit.id]);
+    }
+  }
+})();
+// END SCHOOL EXHIBIT UPDATE
