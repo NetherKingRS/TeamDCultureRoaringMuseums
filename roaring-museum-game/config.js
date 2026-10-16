@@ -5,8 +5,8 @@ window.MUSEUM_CONFIG = {
   // Upload MP3s to assets/narration/; set paths for each exhibit below.
   useDeviceNarration: false, // false disables the device voice for unrecorded exhibits.
   exhibitNarration: {  
-    radio: "", leisure: "", advert: "",
-    vote: "", flapper: "", work: "",
+    radio: "assets/narration/radio.mp3", leisure: "assets/narration/leisure.mp3", advert: "assets/narration/advert.mp3",
+    vote: "assets/narration/vote.mp3", flapper: "assets/narration/flapper.mp3", work: "assets/narration/work.mp3",
     lost: "assets/narration/lost.mp3", gatsby: "assets/narration/gatsby.mp3", dada: "assets/narration/dada.mp3",
     city: "assets/narration/city.mp3", rural: "assets/narration/rural.mp3", road: "assets/narration/road.mp3",
     jazzrecord: "assets/narration/jazzrecord.mp3", harlem: "assets/narration/harlem.mp3", dance: "assets/narration/dance.mp3",
