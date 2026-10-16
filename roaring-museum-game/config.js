@@ -9,7 +9,7 @@ window.MUSEUM_CONFIG = {
     vote: "", flapper: "", work: "",
     lost: "assets/narration/lost.mp3", gatsby: "assets/narration/gatsby.mp3", dada: "assets/narration/dada.mp3",
     city: "assets/narration/city.mp3", rural: "assets/narration/rural.mp3", road: "assets/narration/road.mp3",
-    jazzrecord: "", harlem: "", dance: "",
+    jazzrecord: "assets/narration/jazzrecord.mp3", harlem: "assets/narration/harlem.mp3", dance: "assets/narration/dance.mp3",
     sport: "", cinema: "", homefilm: ""
   },
   introVideo: "",
