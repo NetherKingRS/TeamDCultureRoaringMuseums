@@ -12,7 +12,7 @@ window.MUSEUM_CONFIG = {
     jazzrecord: "assets/narration/jazzrecord.mp3", harlem: "assets/narration/harlem.mp3", dance: "assets/narration/dance.mp3",
     sport: "assets/narration/sport.mp3", cinema: "assets/narration/cinema.mp3", homefilm: "assets/narration/homefilm.mp3"
   },
-  introVideo: "",
+  introVideo: "assets/intro.mp4",
   captions: "",
   studentNarration: "",
   studentNames: "",
