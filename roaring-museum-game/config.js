@@ -7,8 +7,8 @@ window.MUSEUM_CONFIG = {
   exhibitNarration: {  
     radio: "", leisure: "", advert: "",
     vote: "", flapper: "", work: "",
-    lost: "", gatsby: "", dada: "",
-    city: "", rural: "", road: "",
+    lost: "assets/narration/lost.mp3", gatsby: "assets/narration/gatsby.mp3", dada: "assets/narration/dada.mp3",
+    city: "assets/narration/city.mp3", rural: "assets/narration/rural.mp3", road: "assets/narration/road.mp3",
     jazzrecord: "", harlem: "", dance: "",
     sport: "", cinema: "", homefilm: ""
   },
