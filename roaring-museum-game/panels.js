@@ -13,7 +13,7 @@ window.UI = (() => {
     const room=ROOMS.find(r=>r.exhibits.some(e=>e.id===id)),e=room.exhibits.find(e=>e.id===id);
     if(!Game.state.seen.includes(id)){Game.state.seen.push(id);Game.persist();Jazz.hit(79);Game.toast(`Exhibit discovered · ${Game.state.seen.length} / 18`)}
     show(`<span class="tiny" style="color:#8e703c">${room.name}</span><span class="tag">${e.type} · ${e.date}</span><h2 id="panelTitle">${e.title}</h2><p>${e.body}</p>
-      ${e.image?`<figure class="exhibit-figure"><img class="exhibit-image" src="${e.image}" alt="Two women dancing on a railing beside Representative McMillan, with the U.S. Capitol behind them."><figcaption>${e.caption}</figcaption></figure>`:''}
+      ${e.image?`<figure class="exhibit-figure"><img class="exhibit-image" src="${e.image}" alt="${esc(e.imageAlt || e.title)}"><figcaption>${e.caption}</figcaption></figure>`:''}
       <div class="evidence"><strong>The Evidence</strong>${e.evidence}</div><p><strong>Think About It:</strong> ${e.prompt}</p>
       ${e.link?`<a class="secondary" href="${e.link}" target="_blank" rel="noopener">${e.linkLabel} ↗</a>`:''}
       ${e.media?'<p class="small">The archival player opens in a new tab and needs internet access.</p>':''}
